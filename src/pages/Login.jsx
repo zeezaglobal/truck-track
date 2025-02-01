@@ -18,7 +18,16 @@ const Login = () => {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh", justifyContent: "center", alignItems: "center", background: "#f5f5f5" }}>
+    <div style={{    display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    
+      width: "100%",         // Ensures full width
+      height: "100vh", 
+      minHeight: "100vh",
+    position: "absolute",
+    top: 0,
+    left: 0,  }}>
       <Card style={{ width: 350, boxShadow: "0px 4px 8px rgba(0,0,0,0.2)" }}>
         <Title level={2} style={{ textAlign: "center" }}>Login</Title>
         <Form layout="vertical" onFinish={onFinish}>

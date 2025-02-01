@@ -1,49 +1,38 @@
-import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
-import { HomeOutlined, TruckOutlined } from '@ant-design/icons';
-import Option1 from '../pages/Home';
-import Option2 from '../pages/About';
-const { Sider, Content } = Layout;
+import { useState } from 'react';
+import Home from "./Home";
+
+const { Header, Content, Footer } = Layout;
+
 const Dashboard = () => {
-  const [selectedKey, setSelectedKey] = useState('1');
-  const [collapsed, setCollapsed] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState('2'); // Track selected menu item
+
   const handleMenuClick = (e) => {
-    setSelectedKey(e.key);
+    setSelectedMenu(e.key); // Update selected menu based on click
   };
+
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-      <div className="logo" style={{ color: "white", textAlign: "center", padding: "16px" }}>
-            Truck Management
-          </div>
+    <Layout className="layout" style={{ minHeight: '100vh' }}>
+      <Header>
+        <div className="logo" />
         <Menu
-        theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          selectedKeys={[selectedKey]}
+          theme="dark"
+          mode="horizontal"
+          selectedKeys={[selectedMenu]} // Highlight the selected menu
           onClick={handleMenuClick}
-          style={{ height: '100%', borderRight: 0 }}
+          style={{ lineHeight: '64px' }}
         >
-          <Menu.Item key="1" icon={<HomeOutlined /> }>
-            Home
-          </Menu.Item>
-          <Menu.Item key="2" icon={<TruckOutlined /> }>
-            Trucks
-          </Menu.Item>
+          <Menu.Item key="1">Dashboard</Menu.Item>
+          <Menu.Item key="2">Trip Details</Menu.Item>
+          <Menu.Item key="3">Add Trip</Menu.Item>
         </Menu>
-      </Sider>
-      <Layout style={{ padding: '0 24px 24px' }}>
-      <Content
-          style={{
-            padding: 24,
-            margin: 0,
-            minHeight: 280,
-          }}
-        >
-          {selectedKey === '1' && <Option1 />}
-          {selectedKey === '2' && <Option2 />}
-        </Content>
-      </Layout>
+      </Header>
+      <Content style={{ padding: '0 50px', flex: 1 }}>
+        {selectedMenu === '1' && <Home />} {/* Only render Home when "Dashboard" is selected */}
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>
+        Developed by ZeezaGlobal
+      </Footer>
     </Layout>
   );
 };
