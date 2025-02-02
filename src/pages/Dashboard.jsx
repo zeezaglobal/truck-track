@@ -1,6 +1,7 @@
 import { Layout, Menu } from 'antd';
 import { useState } from 'react';
 import Home from "./Home";
+import AddTrip from "./AddTrip";
 
 const { Header, Content, Footer } = Layout;
 
@@ -28,7 +29,8 @@ const Dashboard = () => {
         </Menu>
       </Header>
       <Content style={{ padding: '0 50px', flex: 1 }}>
-        {selectedMenu === '1' && <Home />} {/* Only render Home when "Dashboard" is selected */}
+        {selectedMenu === '1' && <Home />} 
+        {selectedMenu === '2' && <AddTrip />} 
       </Content>
       <Footer style={{ textAlign: 'center' }}>
         Developed by ZeezaGlobal
