@@ -5,7 +5,7 @@ import Home from "./Home";
 const { Header, Content, Footer } = Layout;
 
 const Dashboard = () => {
-  const [selectedMenu, setSelectedMenu] = useState('2'); // Track selected menu item
+  const [selectedMenu, setSelectedMenu] = useState('1'); // Track selected menu item
 
   const handleMenuClick = (e) => {
     setSelectedMenu(e.key); // Update selected menu based on click
