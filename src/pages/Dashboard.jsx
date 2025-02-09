@@ -1,11 +1,13 @@
 import { Layout, Menu } from 'antd';
 import { useState } from 'react';
 import Home from "./Home";
+import AddTrip from "./AddTrip";
+import Expenses from "./Expenses";
 
 const { Header, Content, Footer } = Layout;
 
 const Dashboard = () => {
-  const [selectedMenu, setSelectedMenu] = useState('2'); // Track selected menu item
+  const [selectedMenu, setSelectedMenu] = useState('1'); // Track selected menu item
 
   const handleMenuClick = (e) => {
     setSelectedMenu(e.key); // Update selected menu based on click
@@ -23,12 +25,14 @@ const Dashboard = () => {
           style={{ lineHeight: '64px' }}
         >
           <Menu.Item key="1">Dashboard</Menu.Item>
-          <Menu.Item key="2">Trip Details</Menu.Item>
-          <Menu.Item key="3">Add Trip</Menu.Item>
+          <Menu.Item key="2">Add Trip</Menu.Item>
+          <Menu.Item key="3">Expenses</Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: '0 50px', flex: 1 }}>
-        {selectedMenu === '1' && <Home />} {/* Only render Home when "Dashboard" is selected */}
+        {selectedMenu === '1' && <Home />} 
+        {selectedMenu === '2' && <AddTrip />} 
+        {selectedMenu === '3' && <Expenses />} 
       </Content>
       <Footer style={{ textAlign: 'center' }}>
         Developed by ZeezaGlobal
