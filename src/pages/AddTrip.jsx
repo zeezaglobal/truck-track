@@ -1,16 +1,16 @@
 import React from "react";
 import { Button, DatePicker, Form, Input, Radio, Select, Space } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import animation from "../assets/truck.gif";
+
 const AddTrip = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", marginTop: 20 }}>
+    <div style={{ display: "flex", justifyContent: "center", width: "100%", marginTop: 20 }}>
       {/* Form Section */}
       <Form
-        labelCol={{ span: 6 }}
-        wrapperCol={{ span: 14 }}
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 20 }}
         layout="horizontal"
-        style={{ maxWidth: 600 }}
+        style={{ width: "90%" }} // Ensures the form spans most of the screen
       >
         {/* Vehicle Number */}
         <Form.Item label="Vehicle Number">
@@ -30,10 +30,10 @@ const AddTrip = () => {
 
         {/* Trip Route with Start and End */}
         <Form.Item label="Trip Route">
-          <Space>
-            <Input placeholder="Start Route" />
+          <Space style={{ width: "100%" }}>
+            <Input placeholder="Start Route" style={{ flex: 1 }} />
             <ArrowRightOutlined />
-            <Input placeholder="End Route" />
+            <Input placeholder="End Route" style={{ flex: 1 }} />
           </Space>
         </Form.Item>
 
@@ -48,7 +48,7 @@ const AddTrip = () => {
 
         {/* Date Selection */}
         <Form.Item label="Date">
-          <DatePicker />
+          <DatePicker style={{ width: "100%" }} />
         </Form.Item>
 
         {/* Driver Name */}
@@ -57,19 +57,12 @@ const AddTrip = () => {
         </Form.Item>
 
         {/* Submit Button */}
-        <Form.Item wrapperCol={{ offset: 6 }}>
-          <Button type="primary">Submit</Button>
+        <Form.Item wrapperCol={{ offset: 4 }}>
+          <Button type="primary" block>
+            Submit
+          </Button>
         </Form.Item>
       </Form>
-
-      {/* Animation Section */}
-      <div style={{ marginLeft: 40 }}>
-      <img
-          src={animation}
-          alt="Trip Animation"
-          style={{ width: 300, borderRadius: 10 }}
-        />
-      </div>
     </div>
   );
 };
